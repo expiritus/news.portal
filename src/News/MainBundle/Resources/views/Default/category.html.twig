@@ -1,0 +1,9 @@
+<ul>
+    {% for category in categories %}
+        <div id="body_categories">
+            <li id="list_categories">
+                <a href="/{{ category.id }}/{{ category.category|lower }}">{{ category.category }}</a>
+            </li>
+        </div>
+    {% endfor %}
+</ul>

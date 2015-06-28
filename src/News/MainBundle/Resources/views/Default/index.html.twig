@@ -1,0 +1,27 @@
+{% extends 'NewsMainBundle::layout.html.twig' %}
+
+{% block title %}Главная{% endblock %}
+{% block main %}
+    {% if articles is defined %}
+        {% for article in articles %}
+            <article>
+                <div id="article_image">
+                    <img src="{{ asset('files/') }}{{ article.filename }}">
+                </div>
+                <div class="article_body">
+                    <img src="{{ asset('images/user_icon.png') }}">
+                        <span id="user_created_article">{{ article.username|title }}
+                            </span> - <span id="date_created">{{ article.updatedat|date('d M, Y H:i') }}</span>
+                    <h2><a href="/article/{{ article.id }}"> {{ article.title }}</a></h2>
+                    <p>{{ article.shorttext|slice(0, 150)|raw }}<a class="read_more" href="/article/{{ article.id }}">... Читать далее</a> </p>
+                </div>
+                <div class="clear"></div>
+            </article>
+        {% endfor %}
+    {% endif %}
+    <div class="pagination">
+        {% if articles is defined %}
+            {{ knp_pagination_render(articles) }}
+        {% endif %}
+    </div>
+{% endblock %}

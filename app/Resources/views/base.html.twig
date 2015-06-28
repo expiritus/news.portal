@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}{% endblock %}</title>
+        <meta name="keywords" content="{% block keywords %}{% endblock %}">
+        <meta name="description" content="{% block description %}{% endblock %}">
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset('css/main.css') }}" type="text/css">
+            <link rel="stylesheet" href="{{ asset('css/fotorama.css') }}" type="text/css">
+        {% endblock %}
+        {% block javascripts %}
+            <script src="{{ asset('js/jquery-1.10.2.min.js') }}"></script>
+            <script src="{{ asset('js/fotorama.js') }}"></script>
+        {% endblock %}
+    </head>
+    <body>
+    <div id="container">
+        <header>
+            {% block header %}{% endblock %}
+        </header>
+        <nav>
+            {% block navigation %}{% endblock %}
+        </nav>
+        <section id="content">
+            <main>
+                {% block slider %}{% endblock %}
+                {% block main %}{% endblock %}
+            </main>
+            <aside>
+                {% block forms %}{% endblock %}
+                {% block categories %}{% endblock %}
+            </aside>
+            <div class="clear"></div>
+        </section>
+        <footer id="footer">
+            {% block footer %}{% endblock %}
+        </footer>
+    </div>
+    </body>
+</html>

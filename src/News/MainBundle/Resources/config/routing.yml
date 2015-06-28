@@ -1,0 +1,15 @@
+news_main_homepage:
+    path:     /
+    defaults: { _controller: NewsMainBundle:Default:index }
+
+main_article:
+    path: /article/{id}
+    defaults: { _controller: NewsMainBundle:Default:showArticle }
+
+main_category:
+    path: /{id}/{category}
+    defaults: { _controller: NewsMainBundle:Default:articleCategory }
+
+handle_comments:
+    path: /article/handle
+    defaults: { _controller: NewsMainBundle:Default:handleComments }

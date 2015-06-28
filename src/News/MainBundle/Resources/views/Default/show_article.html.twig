@@ -1,0 +1,31 @@
+{% extends 'NewsMainBundle::layout.html.twig' %}
+
+{% block title %}{{ article.title }}{% endblock %}
+{% block main %}
+    <article>
+        <div class="article_body">
+            <h2 id="article_title"> {{ article.title }}</h2>
+            <p>{{ article.article|raw }}</p>
+        </div>
+        <div class="clear"></div>
+    </article>
+    <section id="comments_for_article">
+        {% if all_comments is not empty %}
+            {% for comments in all_comments %}
+                <div class="comment_body">
+                    <img src="{{ asset('images/user_icon.png') }}">
+                    <span id="user_created_comment">{{ comments.username|title }}
+                    </span> - <span id="date_created">{{ comments.updatedat|date('d M, Y H:i') }}</span>
+                    {{ comments.comments|raw }}
+                </div>
+                <div class="clear"></div>
+            {% endfor %}
+        {% else %}
+            <p>Комментариев нет</p>
+        {% endif %}
+        <div id="comments_form_on_main">
+            {{ form(form) }}
+            {{ form_rest(form) }}
+        </div>
+    </section>
+{% endblock %}

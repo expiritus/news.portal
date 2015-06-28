@@ -1,0 +1,63 @@
+{% extends '::base.html.twig' %}
+
+
+{% block header %}
+    <h1><span id="logo_first_word">Resume</span> <span id="logo_second_word">Site</span></h1>
+    <div id="banner">
+        <img src="{{ asset('images/programming_banner.jpg') }}">
+    </div>
+    <div class="clear"></div>
+{% endblock %}
+
+{% block navigation %}
+    <ul>
+        <li><a href="{{ path('news_main_homepage') }}">ГЛАВНАЯ</a> </li>
+        <li><a href="#">МУЗЫКА</a> </li>
+        <li><a href="#">ФОРУМ</a> </li>
+    </ul>
+{% endblock %}
+
+
+{% block slider %}
+    <div id="image_on_main">
+        <div class="fotorama" data-autoplay="true" data-nav="thumbs">
+            <img src="{{ asset('images/1.jpg') }}">
+            <img src="{{ asset('images/2.jpg') }}">
+            <img src="{{ asset('images/3.jpg') }}">
+            <img src="{{ asset('images/1.jpg') }}">
+            <img src="{{ asset('images/2.jpg') }}">
+            <img src="{{ asset('images/3.jpg') }}">
+            <img src="{{ asset('images/1.jpg') }}">
+            <img src="{{ asset('images/2.jpg') }}">
+            <img src="{{ asset('images/3.jpg') }}">
+            <img src="{{ asset('images/1.jpg') }}">
+            <img src="{{ asset('images/2.jpg') }}">
+            <img src="{{ asset('images/3.jpg') }}">
+        </div>
+    </div>
+{% endblock %}
+
+{% block main %}
+
+{% endblock %}
+
+
+{% block forms %}
+    {{ render(controller('NewsMainBundle:Default:searchForm')) }}
+    {{ render(controller('NewsMainBundle:Default:registeredUser')) }}
+    {{ render(controller('NewsMainBundle:Default:online')) }}
+    {% if error is defined %}
+        <div id="err_login">Не верный логин/пароль</div>
+    {% endif %}
+    {{ render(controller('NewsMainBundle:Default:loginForm')) }}
+{% endblock %}
+
+
+{% block categories %}
+    <div id="categories">
+        <div id="title_categories">CATEGORIES</div>
+        <div id="body_categories">
+            {{ render(controller('NewsMainBundle:Default:menu')) }}
+        </div>
+    </div>
+{% endblock %}

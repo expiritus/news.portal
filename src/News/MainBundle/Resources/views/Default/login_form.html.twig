@@ -1,0 +1,38 @@
+{% if user is defined %}
+    <div id="logged">
+        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+            <span>
+                    {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+                        <a href="{{ path('fos_user_security_logout') }}">
+                            {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                        </a>
+                </span>
+        {% else %}
+            <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+        {% endif %}
+    </div>
+
+    {% if app.request.hasPreviousSession %}
+        {% for type, messages in app.session.flashbag.all() %}
+            {% for message in messages %}
+                <div class="flash-{{ type }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+    {% endif %}
+
+{% else %}
+    <form action="{{ path("fos_user_security_check") }}" method="post">
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+
+        <input class="form-control" type="text" id="username" name="_username" value="{{ last_username }}" required="required" placeholder="{{ 'Username'|trans }}"/>
+
+        <input class="form-control" type="password" id="password" name="_password" required="required" placeholder="{{ 'Password'|trans }}" />
+        <br>
+        <input type="checkbox" id="checkbox" class="remember_me" name="_remember_me" value="on" checked />
+
+        <input class="button" type="submit" id="_submit" name="_submit" value="{{ 'Submit'|trans }}" />
+    </form>
+    <a id="registration" href="{{ path('fos_user_registration_register') }}">Registration</a>
+{% endif %}
