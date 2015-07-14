@@ -11,17 +11,36 @@
     </article>
     <section id="comments_for_article">
         {% if all_comments is not empty %}
+                <p class="count_comments">Комментарии({{ all_comments|length }})</p>
             {% for comments in all_comments %}
-                <div class="comment_body">
-                    <img src="{{ asset('images/user_icon.png') }}">
-                    <span id="user_created_comment">{{ comments.username|title }}
-                    </span> - <span id="date_created">{{ comments.updatedat|date('d M, Y H:i') }}</span>
-                    {{ comments.comments|raw }}
-                </div>
-                <div class="clear"></div>
+                {% if comments.username ==  user %}
+                    <div class="owner_comment_body">
+                        <img src="{{ asset('images/user_icon.png') }}">
+                        <span class="user_created_comment">{{ comments.username|title }}
+                        </span> - <span class="date_created">{{ comments.updatedat|date('d M, Y H:i') }}</span>
+                        <p>{{ comments.comments|raw }}</p>
+                    </div>
+                    <div class="clear"></div>
+                {% elseif user is empty %}
+                    <div class="anon_comment_body">
+                        <img src="{{ asset('images/user_icon.png') }}">
+                        <span class="user_created_comment">{{ comments.username|title }}
+                        </span> - <span class="date_created">{{ comments.updatedat|date('d M, Y H:i') }}</span>
+                        <p>{{ comments.comments|raw }}</p>
+                    </div>
+                    <div class="clear"></div>
+                {% else %}
+                    <div class="comment_body">
+                        <img src="{{ asset('images/user_icon.png') }}">
+                        <span class="user_created_comment">{{ comments.username|title }}
+                        </span> - <span class="date_created">{{ comments.updatedat|date('d M, Y H:i') }}</span>
+                        <p>{{ comments.comments|raw }}</p>
+                    </div>
+                    <div class="clear"></div>
+                {% endif %}
             {% endfor %}
         {% else %}
-            <p>Комментариев нет</p>
+            <p class="count_comments">Комментариев нет</p>
         {% endif %}
         <div id="comments_form_on_main">
             {{ form(form) }}

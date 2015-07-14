@@ -13,3 +13,7 @@ main_category:
 handle_comments:
     path: /article/handle
     defaults: { _controller: NewsMainBundle:Default:handleComments }
+
+search:
+    path: /search
+    defaults: { _controller: NewsMainBundle:Default:search }

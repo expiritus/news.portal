@@ -1,18 +1,25 @@
 *{
     margin: 0;
     padding: 0;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
-body{
+
+
+#container{
     font-family: Lucida Grande, Lucida Sans, Arial, sans-serif;
-    max-width: 100%;
+    width: 100%;
     margin: 0 auto;
 }
 
 
 header{
     /*padding: 10px 200px;*/
-    width: 1000px;
+    max-width: 1200px;
+    width: 80%;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 10px;
 }
@@ -43,46 +50,71 @@ header #banner{
 header #banner img{
     width: 650px;
     height: 115px;
-    margin: -70px 0 -5px 0;
+    margin: -70px -10px -5px 0;
 }
 
 nav{
     background: linear-gradient(180deg, #fb6c1f 15%, #d33b0d 70% );
-    padding: 25px 144px;
-    max-width: 100%;
+    padding: 17px 0px;
+}
+
+
+nav ul{
+    margin: 0 0 0 10%;
 }
 
 nav li{
-    float: left;
+    /*float: left;*/
+    display: inline-block;
     margin: -9px 10px 0 0;
     list-style-type: none;
+    margin-right: -5px;
 }
 
 nav a{
     color: #ffffff;
-    padding: 15px 30px;
+    padding: 17px 30px;
     font-weight: bold;
     text-decoration: none;
 }
 
 nav a:hover{
     background: linear-gradient(to top, #b72b01, #d5400f);
-    padding: 15px 30px;
+    padding: 17px 30px;
     margin: 0 -1px 0 -1px;
     border-right: 1px solid #ba1706;
     border-left: 1px solid #ba1706;
 }
 
 #content{
-    width: 1000px;
+    width: 80%;
+    max-width: 1200px;
     margin: 0 auto;
     box-shadow: 0 0 10px #000000;
 }
 
+
 main{
     float: left;
-    width: 690px;
+    width: 70%;
     padding: 15px;
+}
+
+@media screen and (max-width: 1024px){
+
+    #content{
+        width: 100%;
+        /*min-width: 1000px;*/
+    }
+
+    main{
+        width: 100%;
+    }
+
+    aside{
+        width: 100%;
+        margin: 0 300px 0 0;
+    }
 }
 
 main article{
@@ -97,8 +129,9 @@ main article img{
     margin: -10px 10px 10px 0;
 }
 
-main #user_created_article, main #user_created_comment{
+main #user_created_article, main .user_created_comment{
     color: #ec5b26;
+    font-size: 90%;
 }
 
 #article_title{
@@ -116,7 +149,7 @@ main .article_body span{
 }
 
 
-main .article_body #date_created{
+main .article_body .date_created{
     color: #909090;
 }
 
@@ -131,6 +164,7 @@ main .article_body a{
     text-decoration: none;
 }
 
+
 main .article_body .read_more{
     color: #00008b;
 }
@@ -143,8 +177,69 @@ main .article_body a:hover{
     color: #00008b;
 }
 
-main #comments{
-    border: 1px solid #E6E6E6;
+main #comments_for_article{
+    margin: 10px 0 0 0;
+}
+
+main #comments_for_article .date_created{
+    font-size: 90%;
+}
+
+main #comments_form_on_main{
+    margin: 0 0 0 10px;
+}
+
+main .comment_body{
+    width: 70%;
+    float: left;
+    /*background: linear-gradient(180deg, #F1F1F1, #fcfcfc);*/
+    border-radius: 30px;
+    padding: 30px;
+    margin: 0 0 20px 10px;
+    box-shadow: 0 10px 10px 0 rgba(152, 150, 150, .5);
+}
+
+main .owner_comment_body{
+    float: right;
+    width: 70%;
+    overflow: auto;
+    /*background: linear-gradient(180deg, #F1F1F1, #fcfcfc);*/
+    border-radius: 30px;
+    padding: 30px;
+    margin: 0 0 20px 10px;
+    box-shadow: 0 10px 10px 0 rgba(152, 150, 150, .5);
+}
+
+main #result_search{
+    text-align: center;
+}
+
+main .owner_comment_body span:first-child, main .owner_comment_body:last-child{
+    /*font-size: 90%;*/
+}
+
+main .anon_comment_body{
+    float: right;
+    overflow: auto;
+    /*background: linear-gradient(180deg, #F1F1F1, #fcfcfc);*/
+    border-radius: 30px;
+    padding: 30px;
+    margin: 0 0 20px 0;
+    box-shadow: 0 10px 10px 0 #8B8989;
+}
+
+main .count_comments{
+    margin: 0 0 20px 10px;
+    font-size: 140%;
+}
+
+main #news_mainbundle_comments_submit{
+    font-size: 150%;
+    font-weight: bold;
+    width: 50%;
+    padding: 15px;
+    margin: 20px 25% 0 25%;
+    float: right;
 }
 
 main .pagination{
@@ -193,9 +288,14 @@ main .register-control{
 
 aside{
     float: right;
-    width: 250px;
+    width: 30%;
     padding: 15px;
 }
+
+aside #username, aside #password, aside #search_form{
+    width: 251px;
+}
+
 
 aside .flash-success{
     color: #d0380c;
@@ -219,7 +319,7 @@ aside .form-control{
 aside #search #image{
     float: right;
     width: 30px;
-    margin: -37px 21px 0 0;
+    margin: -37px 30px 0 0;
     opacity: .99;
     z-index: 1;
 }
@@ -240,7 +340,7 @@ aside #registered_users span:first-child{
 aside #users_online{
     float: right;
     width: 125px;
-    margin: 0 0 30px 0;
+    margin: 0 20px 30px 0;
     text-align: center;
     font-size: 90%;
 }
@@ -256,7 +356,7 @@ aside #checkbox{
 
 aside #_submit{
     float: right;
-    margin: 0 15px 0 0;
+    margin: 0 30px 0 0;
 }
 
 aside #registration{
@@ -267,9 +367,10 @@ aside #registration{
 }
 
 aside #err_login{
+    float: left;
     color: #eb4900;
     font-size: 120%;
-    margin: 0 0 0 5px;
+    margin: 0 0 0 10px;
 }
 
 aside #logged{

@@ -12,16 +12,14 @@
                     <img src="{{ asset('images/user_icon.png') }}">
                         <span id="user_created_article">{{ article.username|title }}
                             </span> - <span id="date_created">{{ article.updatedat|date('d M, Y H:i') }}</span>
-                    <h2><a href="/article/{{ article.id }}"> {{ article.title }}</a></h2>
+                    <h2><a href="/article/{{ article.id }}"> {{ article.title|raw }}</a></h2>
                     <p>{{ article.shorttext|slice(0, 150)|raw }}<a class="read_more" href="/article/{{ article.id }}">... Читать далее</a> </p>
                 </div>
                 <div class="clear"></div>
             </article>
         {% endfor %}
-    {% endif %}
-    <div class="pagination">
-        {% if articles is defined %}
+        <div class="pagination">
             {{ knp_pagination_render(articles) }}
-        {% endif %}
-    </div>
+        </div>
+    {% endif %}
 {% endblock %}

@@ -3,6 +3,8 @@
 namespace News\MainBundle\Entity\Repository;
 
 use Doctrine\ORM\EntityRepository;
+use News\MainBundle\Entity\Articles;
+use Padam87\SearchBundle\Filter\Filter;
 
 /**
  * ArticlesRepository
@@ -19,5 +21,25 @@ class ArticlesRepository extends EntityRepository
             ->getQuery()
             ->getResult();
         return $qb;
+    }
+
+//    public function getArticles($qb){
+//        $qb = $qb->getQuery()
+//            ->getResult();
+//        return $qb;
+//    }
+
+    public  function search($word, $order = 'ASC')
+    {
+        $qb = $this->createQueryBuilder('a')
+            ->where('a.title LIKE :word')
+            ->orWhere('a.articles LIKE :word')
+            ->orWhere('a.short_text LIKE :word')
+            ->setParameter('word', '%'.$word.'%')
+            ->orderBy('a.id',$order)
+            ->getQuery()
+            ->getResult();
+        return $qb;
+
     }
 }

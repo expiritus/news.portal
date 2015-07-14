@@ -5,6 +5,7 @@ namespace News\MainBundle\Controller;
 use News\MainBundle\Entity\Comments;
 use News\MainBundle\Entity\OnLine;
 use News\MainBundle\Form\CommentsType;
+use Padam87\SearchBundle\Filter\Filter;
 use Proxies\__CG__\News\MainBundle\Entity\Articles;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
@@ -33,7 +34,6 @@ class DefaultController extends Controller
     }
 
     public function searchFormAction(){
-
         return $this->render('NewsMainBundle:Default:search_form.html.twig');
     }
 
@@ -104,6 +104,21 @@ class DefaultController extends Controller
         }
     }
 
+    public function searchAction(Request $request){
+        $word = $request->query->get('search_word');
+        $search_result = $this->getDoctrine()->getRepository('NewsMainBundle:Articles')->search($word);
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $search_result,
+            $request->query->getInt('page', 1), 5
+        );
+
+        return $this->render('NewsMainBundle:Default:search.html.twig', array(
+            'articles' => $pagination,
+        ));
+    }
+
+
 
     public function menuAction(){
         $categories = $this->getDoctrine()->getRepository('NewsMainBundle:Category')->findAll();
@@ -138,10 +153,12 @@ class DefaultController extends Controller
             $referer = $request->headers->get('referer');
             return new RedirectResponse($referer);
         }
+        $user = $this->getUser();
         return $this->render('NewsMainBundle:Default:show_article.html.twig', array(
             'article' => $article,
             'form' => $comments_form->createView(),
             'all_comments' => $all_comments,
+            'user' => $user,
         ));
     }
 

@@ -22,6 +22,7 @@ class AppKernel extends Kernel
             new JavierEguiluz\Bundle\EasyAdminBundle\EasyAdminBundle(),
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new Trsteel\CkeditorBundle\TrsteelCkeditorBundle(),
+            new Padam87\SearchBundle\Padam87SearchBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

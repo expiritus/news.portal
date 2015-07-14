@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "80d82f291bfc069074ead885abc43be9",
+    "hash": "db875cad2198a366dd00195ac5113ebb",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -1250,6 +1250,55 @@
                 "psr-3"
             ],
             "time": "2015-06-19 13:29:54"
+        },
+        {
+            "name": "padam87/search-bundle",
+            "version": "v2.0.1",
+            "target-dir": "Padam87/SearchBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Padam87/SearchBundle.git",
+                "reference": "8d71284f8fad1e211c04f1693c1ddaf8e9700215"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Padam87/SearchBundle/zipball/8d71284f8fad1e211c04f1693c1ddaf8e9700215",
+                "reference": "8d71284f8fad1e211c04f1693c1ddaf8e9700215",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/doctrine-bundle": "*",
+                "doctrine/orm": "*",
+                "php": ">=5.3.3",
+                "symfony/symfony": ">2.1.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~3.7",
+                "satooshi/php-coveralls": "dev-master"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-0": {
+                    "Padam87\\SearchBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Adam Prager",
+                    "email": "prager.adam87@gmail.com"
+                }
+            ],
+            "description": "Symfony2 SearchBundle",
+            "homepage": "https://github.com/Padam87/SearchBundle",
+            "keywords": [
+                "search",
+                "symfony"
+            ],
+            "time": "2014-04-02 10:48:47"
         },
         {
             "name": "pagerfanta/pagerfanta",
